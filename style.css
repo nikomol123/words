@@ -1,0 +1,53 @@
+body {
+    background: linear-gradient(red,orange,yellow,green,blue);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    
+}
+
+
+
+
+.letter {
+    width: 70px;
+    height: 70px;
+    font-size: 70px;
+    text-align: center;
+    border-radius: 7px;
+    border: 1px solid #000dff;
+    display: none;
+}
+.active {
+    display: flex;
+}
+.pc {
+    background-color: rgb(186, 186, 186);
+}
+.clock {
+    background: rgb(175, 175, 175);
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* df jcc aic  */
+    border-radius: 10px;
+
+    font-size: 40px;
+
+
+
+    
+
+}
+
+
+
+
