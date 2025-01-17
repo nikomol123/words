@@ -3,20 +3,63 @@ let isTime = false;
 let level = false;
 let amountWords = 0;
 
+
+
+let easyWords = ["pencil", "computer", "good", "apple", "games", "chess", "sun", "phone", "lamp",
+  "apple", "banana", "cat", "dog", "fish", "house", "milk", "rain", "sun", "tree",
+  "water", "bird", "cloud", "grass", "chair", "table", "bread", "light", "smile", "star",
+  "book", "pen", "paper", "door", "window", "flower", "happy", "clean", "fast", "kind"
+];
+
+
+let normalWords  = ["watermelon", "bottom", "energy", "keyboard", "airplane",
+  "bridge", "candle", "circle", "garden", "animal", "planet", "basket", "pillow", "silver", "purple",
+  "dollar", "rocket", "jungle", "bottle", "pencil", "window", "summer", "winter", "autumn", "forest",
+  "castle", "coffee", "family", "friend", "bridge", "island", "kitchen", "mirror", "singer", "engine",
+  "pirate", "ticket", "shadow", "school", "farmer", "artist", "parrot", "button", "danger", "ladder",
+  "market", "butter", "dragon", "cactus", "powder", "travel", "carpet", "whale", "bridge", "helmet",
+  "ticket", "camera", "guitar", "rabbit", "circle", "tunnel", "palace", "shower", "cookie", "rocket",
+  "nature", "orange", "throat", "prison", "village", "hunter", "rocket", "cannon", "forest", "flower",
+  "butter", "danger", "castle", "pillow", "silver", "sunset", "harbor", "monday", "painter", "garden",
+  "temple", "bridge", "planet", "wallet", "school", "market", "mirror", "gloves", "jungle", "parrot",
+  "singer", "animal", "jacket", "coffee", "hunter", "engine", "shadow", "family", "castle", "forest"
+];
+
+let hardWords = ["london", "application", "language", "eiffeltower", "headphones",
+  "abdomen", "admiral", "affinity", "alchemy", "ambition", "amplify", "anatomy", "archives", "artisan", "asylum",
+  "basilisk", "beacon", "brigade", "calamity", "capstone", "cataclysm", "celestial", "chromatic", "conductor", "conflict",
+  "conspiracy", "crescent", "crusader", "custodian", "daunting", "deception", "dedication", "delirium", "descendant", "diligence",
+  "discovery", "dominion", "dynasty", "eclipse", "elemental", "enigma", "epiphany", "eternal", "expedition", "fathomless",
+  "fortitude", "fraternity", "galactic", "garrison", "genesis", "gladiator", "harmonic", "harmony", "heritage", "horizon",
+  "illuminate", "immortal", "inception", "inferno", "infinity", "insignia", "labyrinth", "lamentation", "legacy", "levitate",
+  "limestone", "luminary", "magnitude", "manifest", "marauder", "maritime", "melancholy", "mercenary", "metaphor", "monarchy",
+  "monolith", "mystical", "nemesis", "obsidian", "ominous", "orchestra", "pandemonium", "paradigm", "paramount", "peninsula",
+  "perpetual", "phenomenon", "pilgrimage", "pinnacle", "plethora", "prodigy", "prophecy", "quarantine", "quintessential", "radiance",
+  "relic", "resonance", "retribution", "sanctuary", "sentinel", "serenade", "serenity", "sovereign", "spectacle", "specter",
+  "symphony", "threshold", "tranquility", "transcend", "trepidation", "tyranny", "umbra", "universe", "valiant", "vanguard",
+  "vanquish", "verdant", "vigilance", "wilderness", "zealot", "zenith", "archipelago", "catastrophe", "chandelier", "colossus",
+  "constellation", "continuum", "crystalline", "decipher", "euphoric", "evanescent", "expeditionary", "fascination", "incandescent", "ineffable",
+  "iridescent", "luminescent", "meticulous", "perception", "persistence", "reclamation", "reverence", "sophisticated", "tapestry", "timeless"
+];
+
 let word = ''
 
 function newWord() {
   // Load words for the current level
   if (level == 'easy') {
-    words = ["pencil", "computer", "good", "apple", "games", "chess", "sun", "phone", "lamp"];
+    words  = easyWords
   }
 
   if (level == 'normal') {
-    words = ["watermelon", "bottom", "energy", "keyboard", "airplane"];
+    words = normalWords
+    
+    console.log(normalWords);
   }
 
   if (level == 'hard') {
-    words = ["london", "application", "language", "eiffeltower", "headphones"];
+    words = hardWords
+    
+    console.log(hardWords);
   }
 }
 
@@ -34,7 +77,7 @@ function findLongWord() {
     return 'watermelon'
   }
   if (level == 'hard') {
-    return 'application'
+    return 'quintessential'
   }
 
 
@@ -59,7 +102,7 @@ $(".level-easy").click(function () {
   newWord(); // Initialize words for the "easy" level
 
   word = random();
-  $(".all").text(words.length);
+  $(".all").text(10);
 
   $(".active").keyup(function () {
     let index = $(".letter").index(this);
@@ -78,7 +121,7 @@ $(".level-easy").click(function () {
       $(".current").text(amountWords);
       newWord(); // Get new words for the next level
 
-    if (amountWords == words.length) {
+    if (amountWords == words.length || amountWords == 10) {
       alert ('you win')
       location.reload ()
     }
@@ -98,7 +141,7 @@ $(".level-normal").click(function () {
   $(".level-normal").addClass("active-level");
 
 
-  words = ["watermelon", "bottom", "energy", "keyboard", "airplane", 'spoon'];
+  words =normalWords
 
   words.push('cookie', 'candy')
 
@@ -112,7 +155,7 @@ $(".level-normal").click(function () {
 
   word = random();
 
-  $(".all").text(words.length);
+  $(".all").text(5);
 
   $(".active").keyup(function () {
     let index = $(".letter").index(this);
@@ -131,7 +174,7 @@ $(".level-normal").click(function () {
       $(".current").text(amountWords);
       newWord(); // Load new words
 
-      if (amountWords == words.length) {
+      if (amountWords == words.length || amountWords == 5 ) {
         alert ('you win')
         location.reload ()
       }
@@ -150,13 +193,13 @@ $(".level-hard").click(function () {
   $(".level-hard").addClass("active-level");
   $(".level-easy").removeClass("active-level");
 
-  words = ["london", "application", "language", "eiffeltower", "headphones"];
+  words = hardWords
   isTime = true;
   $(".letter").css("opacity", "1");
 
   word = random();
 
-  $(".all").text(words.length);
+  $(".all").text(3);
 
   $(".active").keyup(function () {
     let index = $(".letter").index(this);
@@ -176,7 +219,7 @@ $(".level-hard").click(function () {
       $(".current").text(amountWords);
       newWord(); // Load new words
 
-      if (amountWords == words.length) {
+      if (amountWords == words.length  || amountWords == 3) {
         alert ('you win')
         location.reload ()
       }
@@ -245,9 +288,9 @@ $(".active").keyup(function () {
   $ ('input').eq(1).focus()
 
 
-    if (words.length == amountWords) {
-      alert("you win");
-    }
+    // if (words.length == amountWords  || amountWords == 7) {
+    //   alert("you win");
+    // }
   }
 });
 
