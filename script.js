@@ -104,19 +104,20 @@ $(".level-easy").click(function () {
   word = random();
   $(".all").text(10);
 
+
   $(".active").keyup(function () {
     let index = $(".letter").index(this);
     let correctLetter = word[index];
-    if ($(this).val() == correctLetter) {
+    if ($(this).val().toLowerCase() == correctLetter) {
       $(this).next().next().focus();
     }
 
     let userWord = "";
     $(".letter").each(function () {
-      userWord += $(this).val();
+      userWord += $(this).val().toLowerCase();
     });
 
-    if (userWord == word) {
+    if (userWord.toLowerCase() == word) {
       amountWords++;
       $(".current").text(amountWords);
       newWord(); // Get new words for the next level
@@ -160,16 +161,16 @@ $(".level-normal").click(function () {
   $(".active").keyup(function () {
     let index = $(".letter").index(this);
     let correctLetter = word[index];
-    if ($(this).val() == correctLetter) {
+    if ($(this).val().toLowerCase() == correctLetter) {
       $(this).next().next().focus();
     }
 
     let userWord = "";
     $(".letter").each(function () {
-      userWord += $(this).val();
+      userWord += $(this).val().toLowerCase();
     });
 
-    if (userWord == word) {
+    if (userWord.toLowerCase() == word) {
       amountWords++;
       $(".current").text(amountWords);
       newWord(); // Load new words
@@ -204,16 +205,16 @@ $(".level-hard").click(function () {
   $(".active").keyup(function () {
     let index = $(".letter").index(this);
     let correctLetter = word[index];
-    if ($(this).val() == correctLetter) {
+    if ($(this).val().toLowerCase() == correctLetter) {
       $(this).next().next().focus();
     }
 
     let userWord = "";
     $(".letter").each(function () {
-      userWord += $(this).val();
+      userWord += $(this).val().toLowerCase();
     });
 
-    if (userWord == word) {
+    if (userWord.toLowerCase() == word) {
     $ ('input').val('')
     amountWords++;
       $(".current").text(amountWords);
@@ -269,16 +270,16 @@ $(".active").keyup(function () {
 
   let index = $(".letter").index(this);
   let correctLetter = word[index];
-  if ($(this).val() == correctLetter) {
+  if ($(this).val().toLowerCase() == correctLetter) {
     $(this).next().next().focus();
   }
 
   let userWord = "";
   $(".letter").each(function () {
-    userWord += $(this).val();
+    userWord += $(this).val().toLowerCase();
   });
 
-  if (userWord == word) {
+  if (userWord.toLowerCase() == word) {
     amountWords++;
     $(".current").text(amountWords);
     $ ('input').val('')
